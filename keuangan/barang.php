@@ -19,7 +19,7 @@
 			<?php
 				include 'koneksi.php';
 				$no = 1;
-				$query = mysqli_query($koneksi,"SELECT * FROM barang");
+				$query = mysqli_query($koneksi," SELECT * FROM barang b LEFT JOIN kategori k on b.kategori_id = k.id_kategori");
 				while($data = mysqli_fetch_array($query))
 				{
 			?>
@@ -28,7 +28,7 @@
 				<td><?php echo $data['nama_barang']; ?></td>
 				<td><?php echo $data['kode_barang']; ?></td>
 				<td><?php echo $data['qty']; ?></td>
-				<td><?php echo $data['kategori_id']; ?></td>
+				<td><?php echo $data['nama_kategori']; ?></td>
 				<td>
 					<a href="edit_user.php?id=<?php echo $data['id']; ?>">EDIT</a>
 					<a href="hapus_user.php?id=<?php echo $data['id']; ?>">HAPUS</a>
