@@ -21,7 +21,7 @@
 			<?php
 				include 'koneksi.php';
 				$no = 1;
-				$query = mysqli_query($koneksi,"SELECT * FROM transaksi");
+				$query = mysqli_query($koneksi,"SELECT * FROM transaksi t LEFT JOIN barang b on t.barang_id = b.id_barang LEFT JOIN user u on t.user_id = u.id_user");
 				while($data = mysqli_fetch_array($query))
 				{
 			?>
@@ -30,9 +30,9 @@
 				<td><?php echo $data['tgl_transaksi']; ?></td>
 				<td><?php echo $data['no_transaksi']; ?></td>
 				<td><?php echo $data['jenis_transaksi']; ?></td>
-				<td><?php echo $data['barang_id']; ?></td>
+				<td><?php echo $data['nama_barang']; ?></td>
 				<td><?php echo $data['jumlah_transaksi']; ?></td>
-				<td><?php echo $data['user_id']; ?></td>
+				<td><?php echo $data['nama']; ?></td>
 				<td>
 					<a href="edit_transaksi.php?id=<?php echo $data['id']; ?>">EDIT</a>
 					<a href="hapus_transaksi.php?id=<?php echo $data['id']; ?>">HAPUS</a>
